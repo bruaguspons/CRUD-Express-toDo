@@ -1,0 +1,7 @@
+<form action="/update/task/<%= data._id %>" method="post">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" placeholder="title" value="<%= data.title %>">
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" cols="30" rows="10" placeholder="description"><%= data.description %></textarea>
+    <button type="submit">Add</button>
+</form>
