@@ -33,7 +33,6 @@ export const deleteTask = async(req, res) => {
 export const doneTask = async(req, res) => {
     const {id} = req.params
     const task = await Task.findById(id)
-    console.log(task)
     const upData = {done: !task.done}
     await Task.findByIdAndUpdate(id, upData)
     res.redirect('/')

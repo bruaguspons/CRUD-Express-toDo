@@ -3,7 +3,8 @@ import { connect } from "mongoose";
 import router from "./routes/index.routes.js";
 import path from 'path'
 import { fileURLToPath } from 'url';
-
+import { config } from "dotenv";
+config()
 const app = express();
 
 // set the view engine to ejs
@@ -19,8 +20,8 @@ app.use(express.static(__dirname + '/public'));
 app.use(router)
 
 // connection to DataBase
-const PORT = 4000
-const MONGODB_URL = 'mongodb://localhost:27017/toDo-App'
+const PORT = process.env.PORT || 4000;
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/toDo-App'
 connect(MONGODB_URL)
 .then(() => app.listen(PORT, () => console.log(`server on port: ${PORT}`)))
 .catch(err => console.log(err))
