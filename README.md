@@ -1,6 +1,6 @@
 # CRUD-Express-toDo
 
-Clasic toDo app made with Express.js and Mongodb where you can create, delete, update and get yours tasks.
+Classic toDo app made with Express.js and Mongodb where you can create, delete, update and get yours tasks.
 
 ## Installation
 
