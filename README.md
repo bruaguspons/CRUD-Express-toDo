@@ -13,9 +13,9 @@ echo PORT=(Port number) MONGODB_URL='(url mongodb)' > .env
 npm run dev
 ```
 
-**In case you want run locally do:
--open a new terminal and run "monogod"
--then run the follow commands:
+**In case you want run locally do:**
+- open a new terminal and run "monogod"
+- then run the follow commands:
 
 ```
 cd CRUD-Express-toDo
