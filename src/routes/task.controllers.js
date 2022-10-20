@@ -2,7 +2,7 @@ import Task from "../models/task.model.js"
 
 export const getTasks = async(req, res) => {
     const tasks = await Task.find().lean()
-    res.render('pages/index.ejs', {tasks})
+    res.render('pages/index.ejs', {change: false, tasks})
 }
 
 export const postTask = async(req, res) => {
@@ -13,8 +13,8 @@ export const postTask = async(req, res) => {
 
 export const updateTaskGet = async(req, res) => {
     const data = await Task.findById(req.params.id)
-    console.log(data)
-    res.render('partials/formUpDate.ejs', {data})
+    const tasks = await Task.find().lean()
+    res.render('pages/index.ejs', {change: true, data, tasks})
 }
 
 export const updateTaskPost = async(req, res) => {
@@ -27,5 +27,14 @@ export const updateTaskPost = async(req, res) => {
 export const deleteTask = async(req, res) => {
     const {id} = req.params;
     await Task.findByIdAndRemove(id)
+    res.redirect('/')
+}
+
+export const doneTask = async(req, res) => {
+    const {id} = req.params
+    const task = await Task.findById(id)
+    console.log(task)
+    const upData = {done: !task.done}
+    await Task.findByIdAndUpdate(id, upData)
     res.redirect('/')
 }
